@@ -8,7 +8,6 @@ function ChooseGame({
   setWinMessage,
   result,
   setResult,
-  setRules,
   score,
 }) {
   const [srcImage, setsrcImage] = useState();
@@ -44,7 +43,7 @@ function ChooseGame({
       setResult("PC wins! Rock beats scissors.");
       setScore((score) => score - 1);
     }
-  }, [pcChose]);
+  }, [pcChose, chosen, setResult, setScore]);
   return (
     <>
       <div className="d-flex  flex-md-row flex-column justify-content-between w-75 m-auto p-3 mt-1">

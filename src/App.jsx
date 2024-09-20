@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./components/Button/Button";
 import Game from "./components/Game/Game";
 import Header from "./components/Header/Header";
@@ -9,9 +9,15 @@ function App() {
   const [rules, setRules] = useState("rules");
   const [chosen, setChosen] = useState(0);
   const [pcChose, setPcChose] = useState(0);
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(
+    parseInt(localStorage.getItem("score")) || 0
+  );
   const [winMessage, setWinMessage] = useState(false);
   const [result, setResult] = useState();
+
+  useEffect(() => {
+    localStorage.setItem("score", score);
+  }, [score]);
 
   function handlePcChoose() {
     setPcChose(() => 0);
@@ -19,7 +25,7 @@ function App() {
       const randomNumber = Math.floor(Math.random() * 3) + 1;
       setPcChose(() => randomNumber);
       setWinMessage(() => true);
-    }, 3000);
+    }, 1000);
   }
 
   return (
@@ -54,7 +60,7 @@ function App() {
           score={score}
         />
       ) : null}
-      <Button setRules={setRules} rules={rules} />
+      <Button setRules={setRules} rules={rules} setWinMessage={setWinMessage} />
     </div>
   );
 }

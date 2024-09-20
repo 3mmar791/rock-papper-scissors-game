@@ -10,5 +10,4 @@ function RulesImg() {
     </div>
   );
 }
-// 964 372
 export default RulesImg;

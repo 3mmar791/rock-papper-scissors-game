@@ -1,0 +1,17 @@
+@media (max-width: 767px) {
+  .header .categories {
+    width: 100% !important;
+  }
+  .header .score {
+    width: 100% !important;
+  }
+  .header .result {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  .header {
+    width: 95% !important;
+  }
+}
